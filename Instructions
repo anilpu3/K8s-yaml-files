@@ -9,9 +9,9 @@ curl https://raw.githubusercontent.com/kubernetes-sigs/aws-ebs-csi-driver/master
 kubectl apply -f secret.yaml
 kubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.5"
 step7: 
-kubectl apply  -f storageclass.yml
+kubectl apply  -f storage-class.yaml
 step8:
-kubectl apply  -f tomcat-pvc.yml
+kubectl apply  -f tomcat-pvc.yaml
 step9:
 kubectl get pv
 step10:
