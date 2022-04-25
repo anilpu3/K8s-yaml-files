@@ -1,0 +1,18 @@
+Step1: Go to IAM-master-role
+Step2: click on ADD permisiion and attach AmazonEBSCSIDriverPolicy
+Step3: goto policies create a new policy by any name and choose service as ebs and select all action and choose All resources in resouces.
+Step4: Goto IAM-master-role and attach the policy created
+Step5: follow the same steps in IAM-Worker-role from step1 to step4 and then reboot all the master and worker instances.
+Step6:
+curl https://raw.githubusercontent.com/kubernetes-sigs/aws-ebs-csi-driver/master/deploy/kubernetes/secret.yaml > secret.yaml
+# Edit the secret with user credentials # not required at the moment
+kubectl apply -f secret.yaml
+kubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.5"
+step7: 
+kubectl apply  -f storageclass.yml
+step8:
+kubectl apply  -f tomcat-pvc.yml
+step9:
+kubectl get pv
+step10:
+kubectl get pvc
