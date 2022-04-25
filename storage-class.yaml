@@ -1,0 +1,9 @@
+cat << EOF > /root/storage-class.yaml	
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: aws-ebs-gp2
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  encrypted: "true"
+EOF
