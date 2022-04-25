@@ -1,0 +1,48 @@
+cat << EOF > /root/statefullset.yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tomcat-sf
+  labels:
+    app: tomcat-sf
+spec:
+  ports:
+    - port: 8080
+      name: tomcat-sf
+  clusterIP: None
+  selector:
+    app: tomcat-sf
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: tomcat-sf
+spec:
+  selector:
+    matchLabels:
+      app: tomcat-sf # has to match .spec.template.metadata.labels
+  serviceName: "tomcat-sf"
+  replicas: 3
+  template: 
+      metadata: 
+        labels: 
+          app: tomcat-sf
+      spec: 
+        containers: 
+          - image: anilpu3/cicd-build-docker-repo:1.0
+            name: tomcat
+            volumeMounts:
+              - mountPath: "/usr/local/tomcat/webapps"
+                name: tomcat-sf
+            securityContext:
+              runAsUser: 0
+  volumeClaimTemplates:
+    - metadata:
+        name: tomcat-sf
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: "aws-ebs-gp2"
+        resources:
+          requests:
+            storage: 1Gi 
+EOF            
