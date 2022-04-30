@@ -18,3 +18,12 @@ helm ls
 to delete the chart
 helm del "chart_name"
 
+to set the variables at the run time
+helm upgrade "chart_name" ./"dir_name" --set "variable_name='value'"
+eg1: helm install tomcat ./ma-helm --set Replicas=8
+eg2: helm install tomcat ./ma-helm --set tag_name=1.0
+
+to roll back to the previous version
+helm ls - to check the Revision (version) of deployments
+helm rollback "chart_name" 2 - rolls back to the previous version Revison 2
+
