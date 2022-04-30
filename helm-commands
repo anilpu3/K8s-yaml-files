@@ -25,4 +25,4 @@ eg2: helm install tomcat ./ma-helm --set tag_name=1.0
 
 to roll back to the previous version
 helm ls - to check the Revision (version) of deployments
-helm rollback "chart_name" 2 - rolls back to the previous version Revison 2
+helm rollback "chart_name" 2 - rolls back to the previous version "Revison" - 2
