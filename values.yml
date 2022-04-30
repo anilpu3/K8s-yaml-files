@@ -1,4 +1,4 @@
-cat << EOF > /root/helm-tomcat.yml
+cat << EOF > /root/values.yml
 app: tomcat
 Replicas: 4
 image_name: anilpu3/cicd-build-docker-repo
