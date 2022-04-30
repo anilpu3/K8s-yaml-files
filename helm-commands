@@ -1,0 +1,20 @@
+to create a helm directory
+helm create "dir_name"
+
+template directory - copy all the yml files into this directory.
+Chart directory - used to copy the dependencies.
+chart.yml - to check and modify the version and application details.
+values.yml - used to put the values for the defined variables.
+
+to verify the yml files which are stored in template directory
+helm install --debug --dry-run "chart_name" ./"dir_name"
+
+to install the chart
+helm install "chart_name" ./"dir_name"
+
+to check the list of deployed chart
+helm ls
+
+to delete the chart
+helm del "chart_name"
+
