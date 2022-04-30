@@ -1,0 +1,8 @@
+app: tomcat
+Replicas: 4
+image_name: anilpu3/cicd-build-docker-repo
+tag_name: 95
+Container_name: tomcat
+nodeport: 30010
+port: 8060
+target_port: 8080
